@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build Microblog
-        uses: herschel666/microblog-action@v0.5
+        uses: herschel666/microblog-action@v0.5.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           url: 'https://ekblog.de'
