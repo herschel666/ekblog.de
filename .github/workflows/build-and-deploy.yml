@@ -1,0 +1,29 @@
+name: Build and Deploy
+
+on:
+  issues:
+    types: [opened, edited, reopened, closed, deleted, labeled, unlabeled]
+
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Microblog
+        uses: herschel666/microblog-action@v0.5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          url: 'https://ekblog.de'
+          title: 'ek'
+          description: 'Gemischter Un-, Fein- & Irrsinn'
+          i18n.posts: 'Artikel'
+          i18n.prev: 'vorherige Artikel'
+          i18n.next: 'nächste Artikel'
+
+      - name: Archive site
+        uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: _site
