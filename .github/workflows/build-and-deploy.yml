@@ -1,6 +1,9 @@
 name: Build and Deploy
 
 on:
+  push:
+    branches:
+      - KillYourMaster
   issues:
     types: [opened, edited, reopened, closed, deleted, labeled, unlabeled]
 
