@@ -3,10 +3,7 @@ export const archiveForwarder = async () => {
 
   url.hostname = `archive.${url.hostname}`;
 
-  const { status } = fetch(url, { method: 'HEAD' });
-  
-  console.log('status', typeof status, status);
-  console.log('url', url.toString());
+  const { status } = await fetch(url, { method: 'HEAD' });
 
   if (status === 200) {
     location.href = url.toString();
