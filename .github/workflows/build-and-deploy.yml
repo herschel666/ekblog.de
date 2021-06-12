@@ -14,6 +14,30 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      - name: Cache Node dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Test
+        run: |
+          npm ci
+          npm run fmt:check
+          npm test
+
+      - name: Build
+        run: npm run build
+
       - name: Build Microblog
         uses: herschel666/microblog-action@beta
         with:
@@ -26,6 +50,7 @@ jobs:
           i18n.posts: 'Artikel'
           i18n.prev: 'vorherige Artikel'
           i18n.next: 'nächste Artikel'
+          custom-javascript: 'dist/bundle.js'
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
