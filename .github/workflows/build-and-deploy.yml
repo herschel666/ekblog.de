@@ -43,6 +43,7 @@ jobs:
           title: 'ek|blog'
           description: 'Gemischter Un-, Fein- & Irrsinn'
           date-format: 'd.M.yyyy'
+          label: 'blawg'
           i18n.posts: 'Artikel'
           i18n.prev: 'vorherige Artikel'
           i18n.next: 'nächste Artikel'
