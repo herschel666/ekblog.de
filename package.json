@@ -10,8 +10,8 @@
     "fmt:check": "npm run _fmt -- --check"
   },
   "dependencies": {
-    "@babel/core": "7.28.6",
-    "@babel/preset-env": "7.28.6",
+    "@babel/core": "7.29.0",
+    "@babel/preset-env": "7.29.0",
     "@rollup/plugin-babel": "6.1.0",
     "core-js": "3.48.0",
     "rollup": "2.79.2",
